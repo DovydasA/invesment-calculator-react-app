@@ -1,10 +1,11 @@
 import {useState} from "react";
 
-function Input({children, ...props}) {
+function Input({children, onInputUpdate, ...props}) {
 	const [input, setInput] = useState("");
 	const handleInputChange = (e) => {
-		const {value} = e.target;
+		const {name, value} = e.target;
 		setInput(value);
+		onInputUpdate(name, value);
 	};
 
 	return (

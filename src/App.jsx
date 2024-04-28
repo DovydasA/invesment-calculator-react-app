@@ -3,12 +3,14 @@ import UserInput from "./components/UserInput";
 import ResultTable from "./components/ResultTable";
 import {useState} from "react";
 
-// {
-//     initialInvestment,
-//     annualInvestment,
-//     expectedReturn,
-//     duration,
-//   }
+function hasNullValue(obj) {
+	for (let key in obj) {
+		if (obj[key] === null) {
+			return true;
+		}
+	}
+	return false;
+}
 
 function App() {
 	const [userArgs, setUserArgs] = useState({
@@ -17,19 +19,25 @@ function App() {
 		expectedReturn: null,
 		duration: null,
 	});
+	const areAllArgsSet = !hasNullValue(userArgs);
 
 	const handleUserInput = (property, value) => {
 		setUserArgs((prev) => ({
-			[property]: value,
 			...prev,
+			[property]: parseFloat(value),
 		}));
 	};
+
 	return (
 		<>
 			<Header />
 			<main>
 				<UserInput updateUserQuery={handleUserInput} />
-				<ResultTable />
+				{areAllArgsSet ? (
+					<ResultTable query={userArgs} />
+				) : (
+					<p className="center">All inputs must be filled.</p>
+				)}
 			</main>
 		</>
 	);
