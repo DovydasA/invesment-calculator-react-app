@@ -25,7 +25,7 @@ function App() {
 		const {name, value} = e.target;
 		setUserArgs((prev) => ({
 			...prev,
-			[name]: value ? parseFloat(value) : 0,
+			[name]: value ? parseFloat(value) : "",
 		}));
 	};
 
@@ -37,11 +37,7 @@ function App() {
 					query={userArgs}
 					updateUserQuery={handleUserInput}
 				/>
-				{areAllArgsSet ? (
-					<ResultTable query={userArgs} />
-				) : (
-					<p className="center">All inputs must be filled.</p>
-				)}
+				<ResultTable query={userArgs} />
 			</main>
 		</>
 	);

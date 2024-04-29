@@ -11,6 +11,7 @@ import TableRow from "./TableRow";
 
 function ResultTable({query}) {
 	const result = calculateInvestmentResults(query);
+	const render = result.length > 0 && result[0].interest > 0 ? true : false;
 
 	return (
 		<section>
@@ -20,9 +21,10 @@ function ResultTable({query}) {
 						<th key={col}>{col}</th>
 					))}
 				</tr>
-				{result.map((row) => (
-					<TableRow data={{initialInvestment: query.initialInvestment, ...row}} />
-				))}
+				{render &&
+					result.map((row) => (
+						<TableRow data={{initialInvestment: query.initialInvestment, ...row}} />
+					))}
 			</table>
 		</section>
 	);
