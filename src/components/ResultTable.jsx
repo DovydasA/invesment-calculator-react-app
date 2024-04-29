@@ -10,13 +10,8 @@ import {calculateInvestmentResults} from "../util/investment";
 import TableRow from "./TableRow";
 
 function ResultTable({query}) {
-	let result;
-	let render = false;
-	if (!hasNullValue(query)) {
-		result = calculateInvestmentResults(query);
-		render = true;
-		console.table(result);
-	}
+	const result = calculateInvestmentResults(query);
+
 	return (
 		<section>
 			<table id="result">
@@ -25,10 +20,9 @@ function ResultTable({query}) {
 						<th key={col}>{col}</th>
 					))}
 				</tr>
-				{result &&
-					result.map((row) => (
-						<TableRow data={{initialInvestment: query.initialInvestment, ...row}} />
-					))}
+				{result.map((row) => (
+					<TableRow data={{initialInvestment: query.initialInvestment, ...row}} />
+				))}
 			</table>
 		</section>
 	);

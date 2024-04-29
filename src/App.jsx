@@ -14,17 +14,18 @@ function hasNullValue(obj) {
 
 function App() {
 	const [userArgs, setUserArgs] = useState({
-		initialInvestment: null,
-		annualInvestment: null,
-		expectedReturn: null,
-		duration: null,
+		initialInvestment: 10000,
+		annualInvestment: 200,
+		expectedReturn: 4.5,
+		duration: 10,
 	});
 	const areAllArgsSet = !hasNullValue(userArgs);
 
-	const handleUserInput = (property, value) => {
+	const handleUserInput = (e) => {
+		const {name, value} = e.target;
 		setUserArgs((prev) => ({
 			...prev,
-			[property]: parseFloat(value),
+			[name]: value ? parseFloat(value) : 0,
 		}));
 	};
 
@@ -32,7 +33,10 @@ function App() {
 		<>
 			<Header />
 			<main>
-				<UserInput updateUserQuery={handleUserInput} />
+				<UserInput
+					query={userArgs}
+					updateUserQuery={handleUserInput}
+				/>
 				{areAllArgsSet ? (
 					<ResultTable query={userArgs} />
 				) : (

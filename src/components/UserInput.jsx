@@ -1,18 +1,20 @@
 import Input from "./Input";
 
-function UserInput({updateUserQuery}) {
+function UserInput({query, updateUserQuery}) {
 	return (
 		<>
 			<section id="user-input">
 				<div className="input-group">
 					<Input
 						name="initialInvestment"
-						onInputUpdate={updateUserQuery}>
+						value={query.initialInvestment}
+						onChange={(e) => updateUserQuery(e)}>
 						Initial Investment
 					</Input>
 					<Input
 						name="annualInvestment"
-						onInputUpdate={updateUserQuery}>
+						value={query.annualInvestment}
+						onChange={(e) => updateUserQuery(e)}>
 						Annual Investment
 					</Input>
 				</div>
@@ -20,12 +22,14 @@ function UserInput({updateUserQuery}) {
 					<Input
 						step="0.5"
 						name="expectedReturn"
-						onInputUpdate={updateUserQuery}>
+						value={query.expectedReturn}
+						onChange={(e) => updateUserQuery(e)}>
 						Expected Return
 					</Input>
 					<Input
 						name="duration"
-						onInputUpdate={updateUserQuery}>
+						value={query.duration}
+						onChange={(e) => updateUserQuery(e)}>
 						Duration
 					</Input>
 				</div>
