@@ -2,8 +2,6 @@ import Header from "./components/Header";
 import UserInput from "./components/UserInput";
 import ResultTable from "./components/ResultTable";
 import {useState} from "react";
-import {hasNullValue} from "./util/investment";
-
 
 function App() {
 	const [userArgs, setUserArgs] = useState({
@@ -12,8 +10,6 @@ function App() {
 		expectedReturn: 4.5,
 		duration: 10,
 	});
-	const areAllArgsSet = !hasNullValue(userArgs);
-
 	const handleUserInput = (e) => {
 		const {name, value} = e.target;
 		setUserArgs((prev) => ({

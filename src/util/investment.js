@@ -36,12 +36,3 @@ export const formatter = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 0,
   maximumFractionDigits: 0,
 });
-
-export function hasNullValue(obj) {
-	for (let key in obj) {
-		if (obj[key] === null) {
-			return true;
-		}
-	}
-	return false;
-}
