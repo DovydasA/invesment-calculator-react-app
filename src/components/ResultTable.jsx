@@ -16,15 +16,22 @@ function ResultTable({query}) {
 	return (
 		<section>
 			<table id="result">
-				<tr className="thead">
-					{tableHead.map((col) => (
-						<th key={col}>{col}</th>
-					))}
-				</tr>
-				{render &&
-					result.map((row) => (
-						<TableRow data={{initialInvestment: query.initialInvestment, ...row}} />
-					))}
+				<thead>
+					<tr className="thead">
+						{tableHead.map((col) => (
+							<th key={col}>{col}</th>
+						))}
+					</tr>
+				</thead>
+				<tbody>
+					{render &&
+						result.map((row) => (
+							<TableRow
+								key={crypto.randomUUID()}
+								data={{initialInvestment: query.initialInvestment, ...row}}
+							/>
+						))}
+				</tbody>
 			</table>
 		</section>
 	);

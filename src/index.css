@@ -76,12 +76,12 @@ body {
 	text-align: right;
 }
 
-#result th {
+#result thead {
 	font-size: 1rem;
 	color: #83e6c0;
 }
 
-#result tr {
+#result tbody {
 	font-family: "Roboto Condensed", sans-serif;
 	font-size: 0.9rem;
 	color: #c2e9e0;
