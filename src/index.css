@@ -32,9 +32,6 @@ body {
 }
 
 #user-input {
-	--gap: 2rem;
-	display: grid;
-	gap: var(--gap);
 	padding: 2rem;
 	max-width: 40rem;
 	margin: 2rem auto;

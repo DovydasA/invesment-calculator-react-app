@@ -1,3 +1,6 @@
+import TableRow from "./TableRow";
+import {calculateInvestmentResults} from "../util/investment";
+
 const tableHead = [
 	"Year",
 	"Investment Value",
@@ -5,10 +8,6 @@ const tableHead = [
 	"Total Interest",
 	"Invested Capital",
 ];
-
-import {calculateInvestmentResults} from "../util/investment";
-import TableRow from "./TableRow";
-
 function ResultTable({query}) {
 	const result = calculateInvestmentResults(query);
 	const render = result.length > 0 && result[0].interest > 0 ? true : false;

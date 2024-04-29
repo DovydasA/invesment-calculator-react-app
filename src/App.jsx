@@ -4,7 +4,7 @@ import ResultTable from "./components/ResultTable";
 import {useState} from "react";
 
 function App() {
-	const [userArgs, setUserArgs] = useState({
+	const [userQuery, setuserQuery] = useState({
 		initialInvestment: 10000,
 		annualInvestment: 200,
 		expectedReturn: 4.5,
@@ -12,9 +12,9 @@ function App() {
 	});
 	const handleUserInput = (e) => {
 		const {name, value} = e.target;
-		setUserArgs((prev) => ({
+		setuserQuery((prev) => ({
 			...prev,
-			[name]: value ? parseFloat(value) : "",
+			[name]: +value,
 		}));
 	};
 
@@ -23,10 +23,10 @@ function App() {
 			<Header />
 			<main>
 				<UserInput
-					query={userArgs}
+					query={userQuery}
 					updateUserQuery={handleUserInput}
 				/>
-				<ResultTable query={userArgs} />
+				<ResultTable query={userQuery} />
 			</main>
 		</>
 	);

@@ -9,14 +9,14 @@ function Input({children, ...props}) {
 	// };
 
 	return (
-		<div>
+		<p>
 			<label>{children}</label>
 			<input
 				required
 				type="number"
 				{...props}
 			/>
-		</div>
+		</p>
 	);
 }
 
